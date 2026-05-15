@@ -145,10 +145,52 @@
     .discord-card {
       background: #36393f;
       border-radius: 18px;
-      overflow: hidden;
+      overflow: visible;  /* ← changed */
       box-shadow: 0 8px 32px rgba(0,0,0,0.25);
       transition: transform 0.25s, box-shadow 0.25s;
       cursor: pointer;
+    }
+
+    @keyframes shinyGold {
+      0%   { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+
+    .discord-card.aerin-card {
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      border-radius: 18px;
+    }
+
+    .discord-card.aerin-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 20px;
+      z-index: 0;
+      background: linear-gradient(
+        90deg,
+        #b8860b,
+        #ffd700,
+        #fffacd,
+        #ffd700,
+        #daa520,
+        #ffd700,
+        #fffacd,
+        #b8860b
+      );
+      background-size: 300% auto;
+      animation: shinyGold 3s linear infinite;
+    }
+
+    .discord-card.aerin-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .discord-card:not(.aerin-card) {
+      overflow: hidden;
     }
 
     .discord-card:hover {
@@ -517,34 +559,38 @@ We envision Rin’s Cafe Cinnamon growing from a small Discord shop into a trust
     <div class="staff-grid">
 
       <!-- AERIN — Owner -->
-      <div class="discord-card aerin-card" onclick="window.location.href='biography.html'">
-        <div class="discord-banner banner-pink">
-          <img src="assets/002 about us/aerin profile/banner.png" alt="Aerin Banner" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
-        </div>
-        <div class="discord-avatar-wrap">
-          <div class="discord-avatar"><img src="assets/002 about us/aerin profile/aerin.jpg" alt="Aerin" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
-          <div class="discord-status status-online"></div>
-        </div>
-        <div class="discord-body">
-          <div class="discord-name-row">
-            <div class="discord-username">Aerin</div>
-            <div class="discord-tag">#owner • Rin's Cafe Cinnamon</div>
-          </div>
-          <div class="discord-divider"></div>
-          <div class="discord-section-label">About Me</div>
-          <div class="discord-about">
-            hi!! i'm aerin, the owner of this cozy little cafe ☕ i started this to share sweet deals with everyone~ feel free to dm me anytime!! 🌸
-          </div>
-          <div class="discord-section-label">Roles</div>
-          <div class="discord-roles">
-            <span class="discord-role"><span class="discord-role-dot dot-pink"></span>Owner</span>
-            <span class="discord-role"><span class="discord-role-dot dot-yellow"></span>Head Barista</span>
-            <span class="discord-role"><span class="discord-role-dot dot-lavender"></span>Cafe Cinnamon</span>
-          </div>
-          <div class="discord-member-since">☕ Member since August 2022</div>
-          <a href="biography.html" class="view-bio-link" onclick="event.stopPropagation()">📖 View Full Bio</a>
-        </div>
+<div class="discord-card aerin-card" onclick="window.location.href='biography.html'">
+  <div style="background:#36393f; border-radius:17px; position:relative; z-index:1; overflow:hidden;">
+
+    <div class="discord-banner banner-pink">
+      <img src="assets/002 about us/aerin profile/banner.png" alt="Aerin Banner" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+    </div>
+    <div class="discord-avatar-wrap">
+      <div class="discord-avatar"><img src="assets/002 about us/aerin profile/aerin.jpg" alt="Aerin" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="discord-status status-online"></div>
+    </div>
+    <div class="discord-body">
+      <div class="discord-name-row">
+        <div class="discord-username">Aerin</div>
+        <div class="discord-tag">#owner • Rin's Cafe Cinnamon</div>
       </div>
+      <div class="discord-divider"></div>
+      <div class="discord-section-label">About Me</div>
+      <div class="discord-about">
+        hi!! i'm aerin, the owner of this cozy little cafe ☕ i started this to share sweet deals with everyone~ feel free to dm me anytime!! 🌸
+      </div>
+      <div class="discord-section-label">Roles</div>
+      <div class="discord-roles">
+        <span class="discord-role"><span class="discord-role-dot dot-pink"></span>Owner</span>
+        <span class="discord-role"><span class="discord-role-dot dot-yellow"></span>Head Barista</span>
+        <span class="discord-role"><span class="discord-role-dot dot-lavender"></span>Cafe Cinnamon</span>
+      </div>
+      <div class="discord-member-since">☕ Member since August 2022</div>
+      <a href="biography.html" class="view-bio-link" onclick="event.stopPropagation()">📖 View Full Bio</a>
+    </div>
+
+  </div>
+</div>
 
       <!-- ELLA — Manager -->
       <div class="discord-card">
